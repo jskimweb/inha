@@ -64,7 +64,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999999;
+  z-index: 7;
 }
 
 .modal-srch-box {
@@ -121,13 +121,47 @@ body {
   cursor: pointer;
 }
 
+/* 위로가기 */
+.go-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 6rem;
+  height: 5.5rem;
+  background-color: #777;
+  padding: 1.1rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.go-top i {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 auto;
+  background: url('../images/go-top-arrow.png') no-repeat center;
+}
+
+.go-top span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 200;
+  text-align: center;
+  color: #fff;
+}
+
+.go-top:hover span {
+  text-decoration: underline;
+}
+
+/* 우측고정메뉴 */
 .fixed-menu {
   position: fixed;
   top: 0px;
   right: 0px;
   display: block;
   width: 100%;
-  z-index: 99999;
+  z-index: 5;
 }
 
 .fixed-menu-list {
@@ -138,18 +172,15 @@ body {
   font-size: 0;
 }
 
-.fixed-menu-list li {
-  position: relative;
-  display: block;
-  margin-bottom: 5px;
-}
-
 .fixed-menu__icon {
   position: relative;
   display: block;
   width: 40px;
   height: 40px;
+  border: 0;
   border-radius: 100%;
+  margin-bottom: 5px;
+  cursor: pointer;
   transition: all 0.2s;
 }
 
@@ -247,7 +278,7 @@ body {
   display: block;
   width: 100%;
   background: #5f7486;
-  z-index: -9;
+  z-index: -1;
 }
 
 .top-banner .container {
@@ -284,7 +315,7 @@ body {
   background: url("../images/arrow_prev_1.png") no-repeat center;
   transform: translateY(-50%);
   cursor: pointer;
-  z-index: 9;
+  z-index: 1;
 }
 
 .sw-top-banner__next {
@@ -297,7 +328,7 @@ body {
   background: url("../images/arrow_next_1.png") no-repeat center;
   transform: translateY(-50%);
   cursor: pointer;
-  z-index: 9;
+  z-index: 1;
 }
 
 .top-banner__close {
@@ -305,7 +336,7 @@ body {
   bottom: 4px;
   right: 0;
   display: block;
-  z-index: 9;
+  z-index: 1;
   color: #fff;
   font-size: 13px;
 }
@@ -318,14 +349,14 @@ body {
 .header {
   position: relative;
   display: block;
-  z-index: 999999;
+  z-index: 6;
 }
 
 .header-top {
   position: relative;
   display: block;
   background: #012340;
-  z-index: 9;
+  z-index: 1;
 }
 
 .member {
@@ -431,7 +462,7 @@ body {
 }
 
 .help-list>li:hover {
-  background: #5f7486;
+  background-color: #5f7486;
 }
 
 .help-list>li>* {
@@ -449,6 +480,10 @@ body {
 
 .help-list__notice {
   background: url("../images/icon_notice.png") no-repeat center;
+}
+
+.help-list__notice--active {
+  background-color: #5f7486;
 }
 
 .help-list__total {
@@ -539,7 +574,7 @@ body {
   color: #fff;
   background: #0092dd;
   transition: background 0.5s;
-  z-index: 99;
+  z-index: 2;
 }
 
 .header-main__user-menu::before {
@@ -647,7 +682,7 @@ body {
   border: 7px solid #0062b4;
   background: rgba(0, 0, 0, 0.3);
   padding: 10px 30px;
-  z-index: 9;
+  z-index: 1;
 }
 
 .main-box__cate {
@@ -707,7 +742,7 @@ body {
   display: block;
   width: 100%;
   text-align: center;
-  z-index: 99;
+  z-index: 2;
 }
 
 .sw-main__pg {
@@ -756,7 +791,7 @@ body {
   background: url(../images/bbs_bg.png) no-repeat center;
   background-size: cover;
   margin-top: -130px;
-  z-index: 999;
+  z-index: 3;
 }
 
 .news-box {
@@ -1174,7 +1209,7 @@ body {
   background: url("../images/arrow_prev_4.png") no-repeat center;
   transform: translate(-600px, -50%);
   cursor: pointer;
-  z-index: 9;
+  z-index: 1;
 }
 
 .sw-banner__prev:hover {
@@ -1191,7 +1226,7 @@ body {
   background: url("../images/arrow_next_4.png") no-repeat center;
   transform: translate(600px, -50%);
   cursor: pointer;
-  z-index: 9;
+  z-index: 1;
 }
 
 .sw-banner__next:hover {
@@ -1209,7 +1244,7 @@ body {
   display: block;
   margin-top: -70px;
   padding-bottom: 30px;
-  z-index: 99;
+  z-index: 2;
 }
 
 .info-left {
@@ -1636,7 +1671,7 @@ body {
   font-weight: 400;
   line-height: 1;
   color: #fff;
-  z-index: 9;
+  z-index: 1;
 }
 
 .research-link {
@@ -2486,6 +2521,7 @@ body {
   font-size: 0;
   text-align: center;
   background: #31353f;
+  cursor: pointer;
 }
 
 .sitemap__tit {
@@ -2513,7 +2549,7 @@ body {
 
 .sitemap-main {
   position: relative;
-  display: block;
+  display: none;
   background: #434753;
   padding: 20px 0 75px 0;
 }
