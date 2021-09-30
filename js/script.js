@@ -1,17 +1,34 @@
-$(document).ready(function () {
-  // top-banner__check
-  $('.top-banner__close').click(function() {
-    $('.wrap').toggleClass('wrap--mt-0');
-    $('.help-list__notice').toggleClass('help-list__notice--active');
-  });
+window.onload = function () {
+  // 쿠키 가져오기
+  function getCookie(cookieName) {
+    let search = cookieName + "=";
+    let cookie = document.cookie;
 
-  // 상단 배너 슬라이드 닫기
-  $('.help-list__notice').click(function () {
-    $('.wrap').toggleClass('wrap--mt-0');
-    $(this).toggleClass('help-list__notice--active');
-  });
+    if (cookie.length > 0) {
+      startIndex = cookie.indexOf(cookieName);
+      if (startIndex != -1) {
+        startIndex += cookieName.length;
+        endIndex = cookie.indexOf(";", startIndex);
+        if (endIndex == -1) endIndex = cookie.length;
 
-  var sw_top_banner = new Swiper('.sw-top-banner', {
+        return unescape(cookie.substring(startIndex + 1, endIndex));
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  // 쿠키 세팅하기
+  function setCookie(name, value, expiredays) {
+    let todayDate = new Date();
+    todayDate.setDate(todayDate.getDate() + expiredays);
+    document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+  }
+
+  // 상단 배너 슬라이드
+  new Swiper('.sw-top-banner', {
     loop: true,
     slidesPerView: 2,
     autoplay: {
@@ -25,102 +42,173 @@ $(document).ready(function () {
     pagination: {
       el: '.sw-top-banner__pg',
       clickable: true,
+    },
+  });
+
+  // 상단 배너 슬라이드
+  const topBannerCheck = $('#top-banner__check');
+  const wrap = $('.wrap');
+  const wrapMgTop = 'wrap--mg-top';
+  const helpListNotice = $('.help-list__notice');
+  const helpListNoticeActive = 'help-list__notice--active';
+
+  // 오늘 하루 그만보기 적용
+  topBannerCheck.click(function () {
+    let temp = $(this).is(':checked');
+    if (temp == true) {
+      wrap.removeClass(wrapMgTop);
+      helpListNotice.removeClass(helpListNoticeActive);
+      setCookie('inha_day', 'close', 1);
+    } else {
+      wrap.addClass(wrapMgTop);
+      setCookie('inha_day', 'open', 1);
     }
   });
 
-  // lang-list
-  $('.btn-lang').click(function () {
-    $('.lang-list').stop().slideDown();
-  });
-  $('.btn-lang').parent().mouseleave(function () {
-    $('.lang-list').stop().slideUp();
+  // 쿠키에 따른 상태 유지
+  let inha_day = getCookie('inha_day');
+  if (inha_day == 'close') {
+    helpListNotice.removeClass(helpListNoticeActive);
+    topBannerCheck.attr('checked', true);
+  } else {
+    wrap.addClass(wrapMgTop);
+  }
+
+  // 상단 배너 슬라이드 열기/닫기
+  helpListNotice.click(function () {
+    wrap.toggleClass(wrapMgTop);
+    $(this).toggleClass(helpListNoticeActive);
   });
 
-  // search open & close
-  $('.help-list__search').click(function () {
-    $('.search-txt').val('');
-    $('#search-form').stop().slideDown(200);
-  });
-  $('.search-close').click(function () {
-    $('#search-form').stop().slideUp(200);
+  // 스크롤 시 헤더 고정
+  let headerMainTop = $('.header-main').offset().top;
+
+  $(window).scroll(function () {
+    let winScrTop = $(window).scrollTop();
+    if (winScrTop >= headerMainTop) {
+      $('.header-main').addClass('header-main--fixed');
+    } else {
+      $('.header-main').removeClass('header-main--fixed');
+    }
   });
 
-  // 공백 검색 시 모달 
-  $('.search-submit').click(function () {
-    if ($('.search-txt').val() == '') {
-      $('.modal-srch').show();
+  // lang-list 열기/닫기
+  const btnLang = $('.btn-lang');
+  const langList = $('.lang-list');
+
+  btnLang.click(function () {
+    langList.stop().slideDown();
+  });
+  btnLang.parent().mouseleave(function () {
+    langList.stop().slideUp();
+  });
+
+  // search-form 열기/닫기
+  const helpListSrch = $('.help-list__search');
+  const srchTxt = $('.search-txt');
+  const srchForm = $('#search-form');
+  const srchClose = $('.search-close');
+
+  helpListSrch.click(function () {
+    srchTxt.val('');
+    srchForm.stop().slideDown(200);
+  });
+  srchClose.click(function () {
+    srchForm.stop().slideUp(200);
+  });
+
+  // 공백 검색 시 모달창 띄우기
+  const srchSubmit = $('.search-submit');
+  const modalSrch = $('.modal-srch');
+
+  srchSubmit.click(function () {
+    if (srchTxt.val() == '') {
+      modalSrch.show();
       return false;
     } else {}
   });
 
-  // search modal close
-  $('.modal-srch-box i, button').click(function () {
-    $('.modal-srch').hide();
+  // 검색 모달창 닫기
+  const modalSrchClose = $('.modal-srch-box i, button');
+  const modalSrchBox = $('.modal-srch-box');
+
+  modalSrchClose.click(function () {
+    modalSrch.hide();
   });
-  $('.modal-srch').click(function () {
-    $('.modal-srch').hide();
+  modalSrch.click(function () {
+    modalSrch.hide();
   });
-  $('.modal-srch-box').click(function (event) {
+  modalSrchBox.click(function (event) {
     event.stopPropagation();
   });
 
   // Go-top
-  $('.go-top').click(function () {
+  const goTop = $('.go-top');
+
+  goTop.click(function () {
     $('html, body').stop().animate({
       scrollTop: 0
     }, 400);
   });
 
-  // 우측고정메뉴
-  const fixMenuIcons = $('.fixed-menu-list button');
-  const fixMenuPos = [
+  // 사이드 메뉴
+  const sideMenuBtns = $('.side-menu-list button');
+  const sideMenuPos = [
     0,
     $('.notice').offset().top,
     $('.sanhak').offset().top,
     $('.service').offset().top,
     $('.sns').offset().top
   ];
-
   // 위치값이 실수일 시 반올림
-  for (let i = 0; i < fixMenuPos.length; i++) {
-    fixMenuPos[i] = Math.round(fixMenuPos[i]);
+  for (let i = 0; i < sideMenuPos.length; i++) {
+    sideMenuPos[i] = Math.round(sideMenuPos[i]);
   }
 
-  // 우측고정메뉴 클릭 시 해당 위치로 이동
-  let fixMenuAct = 'scroll';
+  // 사이드 메뉴 클릭 시 해당 위치로 이동
+  let sideMenuAct = 'scroll';
+  const sideMenuBtnFocus = 'side-menu__btn--focused';
 
-  $.each(fixMenuIcons, function (index) {
+  $.each(sideMenuBtns, function (index) {
     $(this).click(function () {
-      fixMenuAct = 'click';
-      fixMenuIcons.removeClass('fixed-menu__icon--focused');
+      sideMenuAct = 'click';
+      sideMenuBtns.removeClass(sideMenuBtnFocus);
       $('html, body').stop().animate({
-        scrollTop: fixMenuPos[index]
+        scrollTop: sideMenuPos[index]
       }, 400, function () {
-        fixMenuIcons.eq(index).addClass('fixed-menu__icon--focused');
-        fixMenuAct = 'scroll';
+        sideMenuBtns.eq(index).addClass(sideMenuBtnFocus);
+        sideMenuAct = 'scroll';
       });
     });
   });
 
-  const fixMenuIconsLastIndex = fixMenuIcons.length - 1;
+  // 사이드 메뉴 버튼 포커스 변경
+  const sideMenuBtnsLastIndex = sideMenuBtns.length - 1;
+  const TopBannerHeight = $('.top-banner').outerHeight();
 
   $(window).scroll(function () {
-    // 스크롤 위치에 따른 우측고정메뉴 포커스 이동
-    if (fixMenuAct == 'click') return;
-
+    if (sideMenuAct == 'click') return false;
     let winScrTop = $(window).scrollTop();
 
-    fixMenuIcons.removeClass('fixed-menu__icon--focused');
-
-    for (let i = fixMenuIconsLastIndex; i >= 0; i--) {
-      if (winScrTop >= fixMenuPos[i]) {
-        fixMenuIcons.eq(i).addClass('fixed-menu__icon--focused');
-        break;
+    sideMenuBtns.removeClass(sideMenuBtnFocus);
+    for (let i = sideMenuBtnsLastIndex; i >= 0; i--) {
+      // 상단 배너 슬라이드 상태에 따라 기준 높이 다르게 처리
+      if (helpListNotice.hasClass(helpListNoticeActive)) {
+        if (winScrTop >= sideMenuPos[i]) {
+          sideMenuBtns.eq(i).addClass(sideMenuBtnFocus);
+          break;
+        }
+      } else {
+        if (winScrTop + TopBannerHeight >= sideMenuPos[i]) {
+          sideMenuBtns.eq(i).addClass(sideMenuBtnFocus);
+          break;
+        }
       }
     }
   });
 
-  var sw_main = new Swiper('.sw-main', {
+  // 메인 슬라이드
+  new Swiper('.sw-main', {
     loop: true,
     autoplay: {
       delay: 5000,
@@ -138,9 +226,13 @@ $(document).ready(function () {
     },
   });
 
-  $('.sw-main__btn').click(function () {
-    $(this).toggleClass('sw-main__btn--play');
-    var temp = $(this).hasClass('sw-main__btn--play');
+  // 메인 슬라이드 autoplay 재생/중지
+  const swMainBtn = $('.sw-main__btn');
+  const swMainBtnPlay = 'sw-main__btn--play';
+
+  swMainBtn.click(function () {
+    $(this).toggleClass(swMainBtnPlay);
+    let temp = $(this).hasClass(swMainBtnPlay);
     if (temp == true) {
       sw_main.autoplay.stop();
     } else {
@@ -148,49 +240,8 @@ $(document).ready(function () {
     }
   });
 
-  var sw_banner = new Swiper('.sw-banner', {
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    speed: 1000,
-    allowTouchMove: false,
-    navigation: {
-      prevEl: '.sw-banner__prev',
-      nextEl: '.sw-banner__next',
-    },
-  });
-
-  var sw_seminar = new Swiper('.sw-seminar', {
-    loop: true,
-    allowTouchMove: false,
-    speed: 1000,
-    navigation: {
-      prevEl: '.sw-seminar__prev',
-      nextEl: '.sw-seminar__next',
-    },
-  });
-
-  var sw_sanhak_news = new Swiper('.sw-sanhak-news', {
-    loop: true,
-    allowTouchMove: false,
-    speed: 1000,
-    navigation: {
-      prevEl: '.sw-sanhak-news__prev',
-      nextEl: '.sw-sanhak-news__next',
-    },
-  });
-
-  var notice_data_div = $('.notice-data .notice-box');
-  var bid_data_div = $('.bid-data .notice-box');
-  var notice_cate = $('.notice__menu-list a');
-
-  var notice_data_1 = [{
+  // 공지사항
+  let notice_data_1 = [{
       title: '2021년 8월 온라인 학위수여식 안내',
       date: '2021.08.09.',
       page: '#'
@@ -222,7 +273,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_2 = [{
+  let notice_data_2 = [{
       title: '[학생지원팀] 코로나19 수도권(인천) 거리두기 4단계 격상에 따른 교내시설이용 지침 안내',
       date: '2021.07.09.',
       page: '#'
@@ -254,7 +305,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_3 = [{
+  let notice_data_3 = [{
       title: '2021년 8월 온라인 학위수여식 안내',
       date: '2021.08.09.',
       page: '#'
@@ -286,7 +337,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_4 = [{
+  let notice_data_4 = [{
       title: '[학부-국가근로] 2021학년도 2학기 국가근로 장학생 희망근로기관 신청 안내',
       date: '2021.08.11.',
       page: '#'
@@ -318,7 +369,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_5 = [{
+  let notice_data_5 = [{
       title: '[평생교육원] 인천시민대학(인하 라이프디자인 스쿨2) 교육생 모집',
       date: '2021.08.11.',
       page: '#'
@@ -350,7 +401,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_6 = [{
+  let notice_data_6 = [{
       title: '조교/사무보조원 채용 공고',
       date: '2020.11.11.',
       page: '#'
@@ -382,7 +433,7 @@ $(document).ready(function () {
     }
   ];
 
-  var notice_data_7 = [{
+  let notice_data_7 = [{
       title: '2021 공사장 가림막 디자인 공모전',
       date: '2021.08.11.',
       page: '#'
@@ -414,7 +465,7 @@ $(document).ready(function () {
     }
   ];
 
-  var bid_data = [{
+  let bid_data = [{
       title: '[입찰 재공고] 인하대학교 항공우주융합캠퍼스 내 편의시설(카페) 운영업체 선정',
       date: '2021.08.11.',
       page: '#'
@@ -446,7 +497,8 @@ $(document).ready(function () {
     },
   ];
 
-  var notice_data_arr = [
+  // 공지사항 데이터 배열
+  let noticeDataArr = [
     notice_data_1,
     notice_data_2,
     notice_data_3,
@@ -456,54 +508,102 @@ $(document).ready(function () {
     notice_data_7,
   ];
 
+  // 공지사항 데이터 전달
+  const noticeDataDiv = $('.notice-data .notice-box');
+  const bidDataDiv = $('.bid-data .notice-box');
+
   function sort_data(_where, _obj) {
-    $.each(_where, function (index, item) {
-      var temp_data = _obj[index];
+    $.each(_where, function (index) {
+      let tempData = _obj[index];
+      let tempTit = $(this).find('.notice-link__tit');
+      let tempDate = $(this).find('.notice-link__date');
+      let tempLink = $(this).find('.notice-link');
 
-      var temp_tit = $(this).find('.notice-link__tit');
-      temp_tit.text(temp_data.title);
-
-
-      var temp_date = $(this).find('.notice-link__date');
-      temp_date.text(temp_data.date);
-
-      var temp_link = $(this).find('.notice-link');
-      temp_link.attr('href', temp_data.page);
+      tempTit.text(tempData.title);
+      tempDate.text(tempData.date);
+      tempLink.attr('href', tempData.page);
     });
   }
 
-  $.each(notice_cate, function (index, item) {
+  sort_data(noticeDataDiv, notice_data_1);
+  sort_data(bidDataDiv, bid_data);
+
+  // 공지사항/입찰공고 탭메뉴 이동
+  const noticeTit = $('.notice__tit');
+  const noticeCont = $('.notice-cont');
+  const noticeTitFocus = 'notice__tit--focused';
+
+  $.each(noticeTit, function (index) {
     $(this).click(function (event) {
       event.preventDefault();
-      sort_data(notice_data_div, notice_data_arr[index]);
+      noticeCont.hide();
+      noticeCont.eq(index).show();
 
-      notice_cate.removeClass('notice__menu-item--focused');
-      $(this).addClass('notice__menu-item--focused');
+      noticeTit.removeClass(noticeTitFocus);
+      $(this).addClass(noticeTitFocus);
     });
   });
 
-  sort_data(notice_data_div, notice_data_1);
-  sort_data(bid_data_div, bid_data);
+  // 공지사항 카테고리 이동
+  const noticeCate = $('.notice__menu-list a');
+  const noticeMenuItemFocus = 'notice__menu-item--focused';
 
-  var notice_tit = $('.notice__tit');
-  var notice_cont = $('.notice-cont');
-  $.each(notice_tit, function (index, item) {
+  $.each(noticeCate, function (index) {
     $(this).click(function (event) {
       event.preventDefault();
-      notice_cont.hide();
-      notice_cont.eq(index).show();
+      sort_data(noticeDataDiv, noticeDataArr[index]);
 
-      notice_tit.removeClass('notice__tit--focused');
-      $(this).addClass('notice__tit--focused');
+      noticeCate.removeClass(noticeMenuItemFocus);
+      $(this).addClass(noticeMenuItemFocus);
     });
   });
 
-  // sitemap
-  $('.sitemap-top').click(function () {
-    $('.sitemap-main').stop().slideToggle(300);
+  // 배너 슬라이드
+  new Swiper('.sw-banner', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
+    speed: 1000,
+    allowTouchMove: false,
+    navigation: {
+      prevEl: '.sw-banner__prev',
+      nextEl: '.sw-banner__next',
+    },
+  });
+
+  // 행사/세미나 슬라이드
+  new Swiper('.sw-seminar', {
+    loop: true,
+    allowTouchMove: false,
+    speed: 1000,
+    navigation: {
+      prevEl: '.sw-seminar__prev',
+      nextEl: '.sw-seminar__next',
+    },
+  });
+
+  // 산학협력단 슬라이드
+  new Swiper('.sw-sanhak-news', {
+    loop: true,
+    allowTouchMove: false,
+    speed: 1000,
+    navigation: {
+      prevEl: '.sw-sanhak-news__prev',
+      nextEl: '.sw-sanhak-news__next',
+    },
+  });
+
+  // sitemap 열기/닫기
+  const sitemapTop = $('.sitemap-top');
+  const sitemapMain = $('.sitemap-main');
+
+  sitemapTop.click(function () {
+    sitemapMain.stop().slideToggle(300);
   })
-});
-
-window.onload = function () {
-
 }
