@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="images/favicon.ico">
   <title>인하대학교</title>
-  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
-  <!-- <script src="js/prefixfree.min.js"></script> -->
   <script src="js/jquery.min.js"></script>
+  <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="js/prefixfree.min.js"></script>
   <script src="js/swiper/swiper.min.js"></script>
   <link rel="stylesheet" href="js/swiper/swiper.min.css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -17,6 +17,22 @@
 </head>
 
 <body>
+  <!-- 모달창 -->
+  <div class="modal">
+    <div class="modal-box">
+      <p class="modal__txt01">
+        본 사이트는 포트폴리오용 사이트로<br>
+        리소스는 원저작자에게 있습니다.
+      </p>
+      <p class="modal__txt02">
+        HTML, CSS, JavaScript & jQuery로 제작되었으며,<br>
+        크롬에 최적화되어 있습니다.
+      </p>
+      <button class="modal__close">닫기</button>
+    </div>
+  </div>
+  <!--// 모달창 -->
+
   <!-- 검색 모달창 -->
   <div class="modal-srch">
     <div class="modal-srch-box">
@@ -80,7 +96,7 @@
             </a>
           </div>
         </div>
-        <div class="swiper-pagination sw-top-banner__pg"></div>
+        <div class="sw-top-banner__pg"></div>
       </div>
       <div class="sw-top-banner__prev"></div>
       <div class="sw-top-banner__next"></div>
@@ -106,18 +122,10 @@
                   <li><a href="#">中國語</a></li>
                 </ul>
               </li>
-              <li>
-                <a href="#" class="member-list__link">인하광장</a>
-              </li>
-              <li>
-                <a href="#" class="member-list__link">로그인</a>
-              </li>
-              <li>
-                <a href="#" class="member-list__link">내정보</a>
-              </li>
-              <li>
-                <a href="#" class="member-list__link">총동창회</a>
-              </li>
+              <li><a href="#" class="member-list__link">인하광장</a></li>
+              <li><a href="#" class="member-list__link">로그인</a></li>
+              <li><a href="#" class="member-list__link">내정보</a></li>
+              <li><a href="#" class="member-list__link">총동창회</a></li>
             </ul>
           </div>
           <div class="help">
@@ -142,46 +150,46 @@
       </div>
       <div class="header-main">
         <div class="container">
-          <a href="#" class="header__logo"></a>
+          <a href="index.html" class="header__logo"></a>
           <ul class="dep01 clearfix">
-            <li><a href="#" class="mainmenu mainmenu01">교육</a></li>
-            <li><a href="#" class="mainmenu mainmenu02">입학/취업</a></li>
-            <li><a href="#" class="mainmenu mainmenu03">산학/연구</a></li>
-            <li><a href="#" class="mainmenu mainmenu04">학사</a></li>
-            <li><a href="#" class="mainmenu mainmenu05">대학생활</a></li>
-            <li><a href="#" class="mainmenu mainmenu06">인하소식</a></li>
-            <li><a href="#" class="mainmenu mainmenu07">인하소개</a></li>
+            <li><span class="mainmenu">교육</span></li>
+            <li><span class="mainmenu">입학/취업</span></li>
+            <li><span class="mainmenu">산학/연구</span></li>
+            <li><span class="mainmenu">학사</span></li>
+            <li><span class="mainmenu">대학생활</span></li>
+            <li><span class="mainmenu">인하소식</span></li>
+            <li><span class="mainmenu">인하소개</span></li>
           </ul>
-          <a href="#" class="header__user-menu">사용자 메뉴</a>
+          <span class="header__user-menu">사용자 메뉴</span>
           <button class="dep02-close">dep02 닫기</button>
           <div class="dep02">
             <div class="dep02-wrap">
               <div class="dep02-left">
-                <div class="dep02-cate dep02-cate01">
+                <div class="dep02-cate">
                   <h2>교육</h2>
                 </div>
-                <div class="dep02-cate dep02-cate02">
+                <div class="dep02-cate">
                   <h2>입학/취업</h2>
                 </div>
-                <div class="dep02-cate dep02-cate03">
+                <div class="dep02-cate">
                   <h2>산학/연구</h2>
                 </div>
-                <div class="dep02-cate dep02-cate04">
+                <div class="dep02-cate">
                   <h2>학사</h2>
                 </div>
-                <div class="dep02-cate dep02-cate05">
+                <div class="dep02-cate">
                   <h2>대학생활</h2>
                 </div>
-                <div class="dep02-cate dep02-cate06">
+                <div class="dep02-cate">
                   <h2>인하소식</h2>
                 </div>
-                <div class="dep02-cate dep02-cate07">
+                <div class="dep02-cate">
                   <h2>인하소개</h2>
                 </div>
               </div>
               <div class="dep02-right">
                 <!-- 교육 -->
-                <div class="dep02-right-cont dep02-right-cont01">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>대학안내</h3>
@@ -254,7 +262,7 @@
                 </div>
                 <!--// 교육 -->
                 <!-- 입학/취업 -->
-                <div class="dep02-right-cont dep02-right-cont02">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>대학</h3>
@@ -285,7 +293,7 @@
                 </div>
                 <!-- // 입학/취업 -->
                 <!-- 산학/연구 -->
-                <div class="dep02-right-cont dep02-right-cont03">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>산학협력단</h3>
@@ -312,7 +320,7 @@
                 </div>
                 <!-- // 산학/연구 -->
                 <!-- 학사 -->
-                <div class="dep02-right-cont dep02-right-cont04">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>학사일정</h3>
@@ -399,7 +407,7 @@
                 </div>
                 <!-- // 학사 -->
                 <!-- 대학생활 -->
-                <div class="dep02-right-cont dep02-right-cont05">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>편의서비스</h3>
@@ -456,7 +464,7 @@
                 </div>
                 <!--// 대학생활 -->
                 <!-- 인하소식 -->
-                <div class="dep02-right-cont dep02-right-cont06">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>인하알림</h3>
@@ -492,7 +500,7 @@
                 </div>
                 <!--// 인하소식 -->
                 <!-- 인하소개 -->
-                <div class="dep02-right-cont dep02-right-cont07">
+                <div class="dep02-right-cont">
                   <ul>
                     <li class="submenu-box">
                       <h3>대학이념</h3>
@@ -1115,17 +1123,17 @@
                 </div>
               </div>
               <div class="sw-seminar-btn">
-                <div class="swiper-pagination sw-seminar__prev"></div>
-                <div class="swiper-pagination sw-seminar__next"></div>
+                <div class="sw-seminar__prev"></div>
+                <div class="sw-seminar__next"></div>
               </div>
             </div>
             <div class="info-link">
-              <a class="info-fund">
+              <a href="#" class="info-fund">
                 <img class="info-fund__img" src="images/fund_1.png" alt="발전기금">
                 <span class="info-fund__txt">INHA</span>
                 <span class="info-fund__tit">발전기금</span>
               </a>
-              <a class="info-sanhak">
+              <a href="#" class="info-sanhak">
                 <img class="info-sanhak__img" src="images/fund_2.png" alt="산학협력단">
                 <span class="info-sanhak__tit">산학협력단</span>
                 <span class="info-sanhak__desc">(산학/연구포털시스템)</span>
@@ -1165,9 +1173,7 @@
                     <a href="#" class="research__sns research__sns--url"></a>
                   </div>
                 </div>
-                <a class="research__more" href="#">
-                  Read More
-                </a>
+                <a class="research__more" href="#">Read More</a>
               </div>
             </div>
           </div>
@@ -1176,18 +1182,10 @@
               <div class="news-letter-box">
                 <p class="news-letter-tit">산학협력단<br>뉴스레터</p>
                 <ul class="news-letter-list">
-                  <li>
-                    <a href="#">2021년 7월호</a>
-                  </li>
-                  <li>
-                    <a href="#">2021년 6월호</a>
-                  </li>
-                  <li>
-                    <a href="#">2021년 5월호</a>
-                  </li>
-                  <li>
-                    <a href="#">2021년 4월호</a>
-                  </li>
+                  <li><a href="#">2021년 7월호</a></li>
+                  <li><a href="#">2021년 6월호</a></li>
+                  <li><a href="#">2021년 5월호</a></li>
+                  <li><a href="#">2021년 4월호</a></li>
                 </ul>
               </div>
             </div>
@@ -1285,8 +1283,8 @@
                   </div>
                 </div>
                 <div class="sw-sanhak-news-btn">
-                  <div class="swiper-pagination sw-sanhak-news__prev"></div>
-                  <div class="swiper-pagination sw-sanhak-news__next"></div>
+                  <div class="sw-sanhak-news__prev"></div>
+                  <div class="sw-sanhak-news__next"></div>
                 </div>
               </div>
             </div>

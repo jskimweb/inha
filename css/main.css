@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url("notosanskr/NotoSansKR.css");
+@import url("../fonts/notosanskr/NotoSansKR.css");
 
 * {
   margin: 0;
@@ -54,6 +54,65 @@ body {
   display: block;
   width: 100%;
   clear: both;
+}
+
+/* 모달창 */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  z-index: 7;
+}
+
+.modal-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 55rem;
+  height: 30rem;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 4.5rem 5rem;
+}
+
+.modal__txt01 {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 3rem;
+  color: #000;
+}
+
+.modal__txt02 {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+}
+
+.modal__close {
+  position: absolute;
+  right: 4rem;
+  bottom: 3.5rem;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 4rem;
+  text-align: center;
+  border: 0;
+  border-radius: .5rem;
+  color: #fff;
+  background-color: #000;
+  padding: 0 3rem;
+  cursor: pointer;
 }
 
 /* 검색 모달창 */
@@ -376,12 +435,18 @@ body {
   position: relative;
   display: block;
   float: left;
-  border-left: .1rem solid rgba(255, 255, 255, 0.2);
+  border-left: .1rem solid #465d72;
+  transition: all .5s;
 }
 
 .member-list>li:last-child {
-  border-right: .1rem solid rgba(255, 255, 255, 0.2);
+  border-right: .1rem solid #465d72;
 }
+
+.member-list>li:hover {
+  background-color: #5f7486;
+}
+
 
 .member-list__link {
   position: relative;
@@ -391,6 +456,16 @@ body {
   color: #fff;
   padding: 0 1.5rem;
   cursor: pointer;
+}
+
+.btn-lang::after {
+  content: "";
+  display: inline-block;
+  width: .6rem;
+  height: .4rem;
+  vertical-align: .2rem;
+  background: url("../images/language_bul.png") no-repeat center;
+  margin-left: 1rem;
 }
 
 .lang-list {
@@ -403,17 +478,20 @@ body {
 }
 
 .lang-list>li {
-  position: relative;
   display: block;
-  border-bottom: .1rem solid rgba(255, 255, 255, .2);
+  border-bottom: .1rem solid #465d72;
+  transition: all .5s;
 }
 
 .lang-list>li:first-child {
-  border-top: .1rem solid rgba(255, 255, 255, .2);
+  border-top: .1rem solid #465d72;
+}
+
+.lang-list>li:hover {
+  background-color: #5f7486;
 }
 
 .lang-list>li>a {
-  position: relative;
   display: block;
   font-size: 1.3rem;
   text-align: center;
@@ -421,27 +499,7 @@ body {
   padding: .5rem 0;
 }
 
-.member-list a {
-  transition: all .5s;
-}
-
-.member-list a:hover {
-  background-color: #5f7486;
-}
-
-.btn-lang::after {
-  content: "";
-  position: relative;
-  display: inline-block;
-  width: .6rem;
-  height: .4rem;
-  vertical-align: .2rem;
-  background: url("../images/language_bul.png") no-repeat center;
-  margin-left: 1rem;
-}
-
 .help {
-  position: relative;
   display: block;
   float: right;
 }
@@ -452,7 +510,6 @@ body {
 }
 
 .help-list>li {
-  position: relative;
   display: block;
   float: left;
   border-left: .1rem solid rgba(255, 255, 255, .2);
@@ -591,6 +648,7 @@ body {
   font-weight: 400;
   line-height: 6rem;
   padding: 0 .7rem;
+  cursor: pointer;
 }
 
 .mainmenu::after {
@@ -623,8 +681,13 @@ body {
   text-align: center;
   color: #fff;
   background-color: #0092dd;
-  transition: all .5s;
+  cursor: pointer;
   z-index: 2;
+  transition: all .5s;
+}
+
+.header__user-menu:hover {
+  background-color: #5f7485;
 }
 
 .header__user-menu::before {
@@ -635,10 +698,6 @@ body {
   vertical-align: -.6rem;
   background: url("../images/icon_user-menu.png") no-repeat center;
   margin-right: .3rem;
-}
-
-.header__user-menu:hover {
-  background-color: #5f7485;
 }
 
 .dep02 {
@@ -665,7 +724,7 @@ body {
   background: url('../images/dep02-close.png') no-repeat center;
   border: .1rem solid #222;
   cursor: pointer;
-  transition: all .2s cubic-bezier(.3, 0, .3, 1);
+  transition: all .2s cubic-bezier(0.3, 0, 0.3, 1);
 }
 
 .dep02-close:hover {
@@ -892,7 +951,7 @@ body {
   box-sizing: border-box;
   border-bottom: .1rem solid #8ad7dc;
   cursor: pointer;
-  transition: all .2s cubic-bezier(.3, 0, .3, 1);
+  transition: all .2s cubic-bezier(0.3, 0, 0.3, 1);
 }
 
 .user-menu__tab:hover {
@@ -941,6 +1000,7 @@ body {
   width: 1.6rem;
   height: .4rem;
   background: url('../images/user-menu-tab-dots.png') no-repeat center;
+  transition: all .2s cubic-bezier(0.3, 0, 0.3, 1);
 }
 
 .user-menu__tab:hover::after {
@@ -1000,6 +1060,11 @@ body {
   width: 20%;
   line-height: 3.35rem;
   padding-left: 2rem;
+}
+
+.user-menu-right-cont a:hover {
+  color: #4ebcc3;
+  font-weight: 500;
 }
 
 .user-menu-right-cont a::before {
@@ -1287,7 +1352,7 @@ body {
 .news-sns-bg {
   position: absolute;
   left: 0;
-  top: 0;
+  top: .2rem;
   display: block;
   width: 100%;
   height: 100%;
@@ -1522,7 +1587,6 @@ body {
 }
 
 .notice-link__tit {
-  position: relative;
   display: block;
   height: 4.8rem;
   font-size: 1.6rem;
@@ -1535,7 +1599,6 @@ body {
 }
 
 .notice-link__date {
-  position: relative;
   display: block;
   height: 3rem;
   font-size: 1.5rem;
@@ -1663,7 +1726,6 @@ body {
 }
 
 .calendar__tit {
-  position: relative;
   display: block;
   font-size: 2.4rem;
   font-weight: 400;
@@ -1671,7 +1733,6 @@ body {
 }
 
 .calendar__date {
-  position: relative;
   display: block;
   font-size: 3.7rem;
   font-weight: 500;
@@ -1681,24 +1742,20 @@ body {
 }
 
 .calendar-cont {
-  position: relative;
   display: block;
 }
 
 .calendar-list {
-  position: relative;
   display: block;
 }
 
 .calendar-list>li {
-  position: relative;
   display: block;
   overflow: hidden;
   margin-bottom: .8rem;
 }
 
 .calendar-list__date {
-  position: relative;
   display: block;
   float: left;
   width: 12rem;
@@ -1712,7 +1769,6 @@ body {
 }
 
 .calendar-list__link {
-  position: relative;
   display: block;
   float: left;
   width: 37rem;
@@ -1750,7 +1806,6 @@ body {
 }
 
 .info-seminar__tit {
-  position: relative;
   display: block;
   font-size: 2.4rem;
   font-weight: 400;
@@ -1785,7 +1840,6 @@ body {
 }
 
 .seminar-link__tit {
-  position: relative;
   display: block;
   font-size: 1.6rem;
   font-weight: 300;
@@ -1797,7 +1851,6 @@ body {
 }
 
 .seminar-link__txt {
-  position: relative;
   display: block;
   height: 3.5rem;
   font-size: 1.3rem;
@@ -1866,7 +1919,6 @@ body {
 }
 
 .sw-seminar__prev {
-  position: relative;
   display: inline-block;
   width: 2.5rem;
   height: 2.5rem;
@@ -1882,7 +1934,6 @@ body {
 }
 
 .sw-seminar__next {
-  position: relative;
   display: inline-block;
   width: 2.5rem;
   height: 2.5rem;
@@ -1944,7 +1995,6 @@ body {
 }
 
 .info-fund__txt {
-  position: relative;
   display: block;
   font-size: 2.4rem;
   line-height: 1;
@@ -1953,7 +2003,6 @@ body {
 
 .info-fund__tit,
 .info-sanhak__tit {
-  position: relative;
   display: block;
   font-size: 2.4rem;
   color: #2f2f2f;
@@ -1968,7 +2017,6 @@ body {
 }
 
 .info-sanhak__desc {
-  position: relative;
   display: block;
   font-size: 1.2rem;
   line-height: 1;
@@ -2051,21 +2099,18 @@ body {
 }
 
 .research__img {
-  position: relative;
   display: block;
   float: left;
   padding-right: 1.5rem;
 }
 
 .research__img img {
-  position: relative;
   display: block;
   width: 36rem;
   height: 23.5rem;
 }
 
 .research-txt {
-  position: relative;
   display: block;
   float: left;
   width: calc(100% - 37.5rem);
@@ -2073,7 +2118,6 @@ body {
 }
 
 .research__tit {
-  position: relative;
   display: block;
   height: 6.5rem;
   font-size: 2.3rem;
@@ -2085,7 +2129,6 @@ body {
 }
 
 .research__desc {
-  position: relative;
   display: block;
   height: 11.5rem;
   font-size: 1.6rem;
@@ -2128,7 +2171,6 @@ body {
 }
 
 .research__sns {
-  position: relative;
   display: inline-block;
   width: 5rem;
   height: 5rem;
@@ -2209,12 +2251,10 @@ body {
 }
 
 .news-letter-list {
-  position: relative;
   display: block;
 }
 
 .news-letter-list>li {
-  position: relative;
   display: block;
 }
 
@@ -2287,7 +2327,6 @@ body {
 }
 
 .sanhak-news-tit {
-  position: relative;
   display: block;
   font-size: 2.4rem;
   font-weight: 400;
@@ -2337,7 +2376,6 @@ body {
 }
 
 .sw-sanhak-news__tit {
-  position: relative;
   display: block;
   height: 3rem;
   font-size: 2.3rem;
@@ -2349,7 +2387,6 @@ body {
 }
 
 .sw-sanhak-news__desc {
-  position: relative;
   display: block;
   height: 8rem;
   font-size: 1.6rem;
@@ -2369,7 +2406,6 @@ body {
 }
 
 .sw-sanhak-news__prev {
-  position: relative;
   display: inline-block;
   width: 3.5rem;
   height: 3.5rem;
@@ -2389,7 +2425,6 @@ body {
 }
 
 .sw-sanhak-news__next {
-  position: relative;
   display: inline-block;
   width: 3.5rem;
   height: 3.5rem;
@@ -2415,6 +2450,14 @@ body {
   display: block;
   background: #51c4cb;
   padding: .7rem;
+}
+
+.patent-news-left {
+  position: relative;
+  display: block;
+  float: left;
+  width: calc(100% - 20.8rem);
+  height: 25rem;
 }
 
 .patent-news__tit {
@@ -2443,16 +2486,7 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-.patent-news-left {
-  position: relative;
-  display: block;
-  float: left;
-  width: calc(100% - 20.8rem);
-  height: 25rem;
-}
-
 .patent-news-left span {
-  position: relative;
   display: block;
   font-size: 1.6rem;
   font-weight: 300;
@@ -2462,7 +2496,6 @@ body {
 }
 
 .patent-news-right {
-  position: relative;
   display: block;
   float: left;
   width: 20.8rem;
@@ -2485,14 +2518,12 @@ body {
 }
 
 .service-top {
-  position: relative;
   display: block;
   height: 47.8rem;
   padding: 11rem 0 15rem 0;
 }
 
 .service-top a {
-  position: relative;
   display: block;
   float: left;
   width: 22%;
@@ -2539,13 +2570,11 @@ body {
 }
 
 .service-bot {
-  position: relative;
   display: block;
   background: rgba(15, 166, 184, 0.9);
 }
 
 .service-left {
-  position: relative;
   display: block;
   float: left;
   width: 30rem;
@@ -2616,7 +2645,6 @@ body {
 }
 
 .service-right {
-  position: relative;
   display: block;
   float: left;
   width: 90rem;
@@ -2625,7 +2653,6 @@ body {
 }
 
 .one-stop__tit {
-  position: relative;
   display: block;
   font-size: 4rem;
   font-weight: 200;
@@ -2635,31 +2662,26 @@ body {
 }
 
 .one-stop-wrap {
-  position: relative;
   display: block;
 }
 
 .one-stop-list {
-  position: relative;
   display: block;
   width: 85rem;
 }
 
 .one-stop-list>li {
-  position: relative;
   display: block;
   float: left;
   padding: 0 1.7rem;
 }
 
 .one-stop-list>li>a {
-  position: relative;
   display: block;
   height: 15rem;
 }
 
 .one-stop-list>li>a>img {
-  position: relative;
   display: block;
   width: 8.7rem;
   height: 8.7rem;
@@ -2687,7 +2709,6 @@ body {
 }
 
 .one-stop-list>li>a>span {
-  position: relative;
   display: block;
   font-size: 1.4rem;
   line-height: 1.25;
@@ -2856,7 +2877,6 @@ body {
 }
 
 .sns-main__tit {
-  position: relative;
   display: block;
   height: 4.5rem;
   font-size: 1.6rem;
@@ -2868,7 +2888,6 @@ body {
 }
 
 .sns-main__date {
-  position: relative;
   display: block;
   font-size: 1.6rem;
   line-height: 1;
@@ -2896,7 +2915,6 @@ body {
 }
 
 .sitemap__tit {
-  position: relative;
   display: inline-block;
   font-size: 1.6rem;
   line-height: 5rem;
@@ -2909,7 +2927,6 @@ body {
 }
 
 .sitemap__icon {
-  position: relative;
   display: inline-block;
   width: 1.1rem;
   height: .7rem;
@@ -2938,7 +2955,6 @@ body {
 }
 
 .sitemap-box__tit {
-  position: relative;
   display: block;
   font-size: 1.6rem;
   font-weight: 200;
@@ -3052,27 +3068,23 @@ body {
 }
 
 .footer-info {
-  position: relative;
   display: block;
   background: #292e3e;
   padding: 4rem 0;
 }
 
 .footer-logo {
-  position: relative;
   display: block;
   float: left;
 }
 
 .footer-txt {
-  position: relative;
   display: block;
   float: left;
   margin-left: 5.7rem;
 }
 
 .footer-txt address {
-  position: relative;
   display: block;
   font-size: 1.4rem;
   font-weight: 400;
@@ -3088,7 +3100,6 @@ body {
 }
 
 .footer-txt span {
-  position: relative;
   display: block;
   font-size: 1.4rem;
   font-weight: 200;
@@ -3096,25 +3107,21 @@ body {
 }
 
 .footer-sns {
-  position: relative;
   display: block;
   float: right;
 }
 
 .footer-sns-list {
-  position: relative;
   display: block;
   font-size: 0;
 }
 
 .footer-sns-list li {
-  position: relative;
   display: inline-block;
   margin-left: .8rem;
 }
 
 .footer-sns__icon {
-  position: relative;
   display: inline-block;
   width: 3.6rem;
   height: 3.6rem;

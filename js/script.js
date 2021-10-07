@@ -1,4 +1,21 @@
 window.onload = function () {
+  // 모달창 닫기
+  const modal = $('.modal');
+  const modalBox = $('.modal-box');
+  const modalClose = $('.modal__close');
+
+  modalClose.click(function () {
+    modal.stop().fadeOut();
+  });
+
+  modal.click(function () {
+    $(this).stop().fadeOut();
+  });
+
+  modalBox.click(function (event) {
+    event.stopPropagation();
+  });
+
   // 쿠키 가져오기
   function getCookie(cookieName) {
     let search = cookieName + "=";
@@ -151,8 +168,9 @@ window.onload = function () {
     }, 400);
   });
 
-  // 사이드 메뉴
-  const sideMenuBtns = $('.side-menu-list button');
+  // 사이드 메뉴 클릭 시 해당 위치로 이동
+  const sideMenuBtns = $('.side-menu__btn');
+  const sideMenuBtnFocus = 'side-menu__btn--focused';
   const sideMenuPos = [
     0,
     $('.notice').offset().top,
@@ -160,10 +178,7 @@ window.onload = function () {
     $('.service').offset().top,
     $('.sns').offset().top
   ];
-
-  // 사이드 메뉴 클릭 시 해당 위치로 이동
   let sideMenuAct = 'scroll';
-  const sideMenuBtnFocus = 'side-menu__btn--focused';
 
   $.each(sideMenuBtns, function (index) {
     $(this).click(function () {
@@ -204,50 +219,24 @@ window.onload = function () {
   });
 
   // 서브메뉴 보이기/숨기기
-  const mainmenus = [
-    $('.mainmenu01'),
-    $('.mainmenu02'),
-    $('.mainmenu03'),
-    $('.mainmenu04'),
-    $('.mainmenu05'),
-    $('.mainmenu06'),
-    $('.mainmenu07')
-  ];
+  const mainmenu = $('.mainmenu');
   const userMenuBtn = $('.header__user-menu');
   const dep02 = $('.dep02');
   const dep02Close = $('.dep02-close');
   const blackBg = $('.black-bg');
-  const dep02Cate = $('.dep02-cate h2');
-  const dep02Cates = [
-    $('.dep02-cate01 h2'),
-    $('.dep02-cate02 h2'),
-    $('.dep02-cate03 h2'),
-    $('.dep02-cate04 h2'),
-    $('.dep02-cate05 h2'),
-    $('.dep02-cate06 h2'),
-    $('.dep02-cate07 h2')
-  ];
+  const dep02Cate = $('.dep02-cate');
   const dep02RightCont = $('.dep02-right-cont');
-  const dep02RightConts = [
-    $('.dep02-right-cont01'),
-    $('.dep02-right-cont02'),
-    $('.dep02-right-cont03'),
-    $('.dep02-right-cont04'),
-    $('.dep02-right-cont05'),
-    $('.dep02-right-cont06'),
-    $('.dep02-right-cont07')
-  ];
 
-  $.each(mainmenus, function (index) {
+  $.each(mainmenu, function (index) {
     $(this).click(function () {
       userMenuBtn.hide();
       dep02.hide();
       dep02Close.show();
       blackBg.show();
-      dep02Cate.removeAttr('style');
+      dep02Cate.find('h2').removeAttr('style');
       dep02RightCont.removeAttr('style');
-      dep02Cates[index].css('display', 'block');
-      dep02RightConts[index].css('display', 'block');
+      dep02Cate.eq(index).find('h2').css('display', 'block');
+      dep02RightCont.eq(index).css('display', 'block');
       dep02.stop().slideDown(200);
     });
   });
@@ -257,7 +246,7 @@ window.onload = function () {
     blackBg.hide();
     userMenuBtn.show();
     dep02.stop().slideUp(200);
-    dep02Cate.removeAttr('style');
+    dep02Cate.find('h2').removeAttr('style');
     dep02RightCont.removeAttr('style');
   });
 
@@ -286,12 +275,6 @@ window.onload = function () {
     'user-menu__tab04--focus'
   ];
   const userMenuRightCont = $('.user-menu-right-cont');
-  const userMenuRightConts = [
-    $('.user-menu-right-cont01'),
-    $('.user-menu-right-cont02'),
-    $('.user-menu-right-cont03'),
-    $('.user-menu-right-cont04')
-  ];
 
   $.each(userMenuTabs, function (index) {
     $(this).click(function () {
@@ -300,7 +283,7 @@ window.onload = function () {
       });
       $(this).addClass(userMenuTabsFocus[index]);
       userMenuRightCont.removeClass('user-menu-right-cont--show');
-      userMenuRightConts[index].addClass('user-menu-right-cont--show');
+      userMenuRightCont.eq(index).addClass('user-menu-right-cont--show');
     });
   });
 
