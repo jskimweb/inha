@@ -500,6 +500,7 @@ body {
 }
 
 .help {
+  position: relative;
   display: block;
   float: right;
 }

@@ -67,32 +67,33 @@
 
   <!-- 상단 배너 슬라이드 -->
   <section class="top-banner">
+    <h2 style="display: none;">Top Banner</h2>
     <div class="container">
       <div class="swiper-container sw-top-banner">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <a href="#" class="top-banner__link">
-              <img src="images/top_banner_1.jpg" art="상단배너_1">
+              <img src="images/top_banner_1.jpg" alt="상단배너_1">
             </a>
           </div>
           <div class="swiper-slide">
             <a href="#" class="top-banner__link">
-              <img src="images/top_banner_2.jpg" art="상단배너_2">
+              <img src="images/top_banner_2.jpg" alt="상단배너_2">
             </a>
           </div>
           <div class="swiper-slide">
             <a href="#" class="top-banner__link">
-              <img src="images/top_banner_3.jpg" art="상단배너_3">
+              <img src="images/top_banner_3.jpg" alt="상단배너_3">
             </a>
           </div>
           <div class="swiper-slide">
             <a href="#" class="top-banner__link">
-              <img src="images/top_banner_4.jpg" art="상단배너_4">
+              <img src="images/top_banner_4.jpg" alt="상단배너_4">
             </a>
           </div>
           <div class="swiper-slide">
             <a href="#" class="top-banner__link">
-              <img src="images/top_banner_5.jpg" art="상단배너_5">
+              <img src="images/top_banner_5.jpg" alt="상단배너_5">
             </a>
           </div>
         </div>
@@ -101,7 +102,7 @@
       <div class="sw-top-banner__prev"></div>
       <div class="sw-top-banner__next"></div>
       <form class="top-banner__close">
-        <input type="checkbox" name="" id="top-banner__check">
+        <input type="checkbox" id="top-banner__check">
         <label for="top-banner__check" class="top-banner__close-txt">오늘 하루 그만 보기</label>
       </form>
     </div>
@@ -139,12 +140,12 @@
               <li>
                 <a href="#" class="help-list__total">전체메뉴</a>
               </li>
-              <form action="" method="GET" id="search-form">
-                <input type="text" name="search-word" placeholder="검색어를 입력하세요." class="search-txt">
-                <input type="submit" class="search-submit">
-                <input type="button" class="search-close">
-              </form>
             </ul>
+            <form method="GET" id="search-form">
+              <input type="text" name="search-word" placeholder="검색어를 입력하세요." class="search-txt">
+              <input type="submit" class="search-submit">
+              <button type="button" class="search-close"></button>
+            </form>
           </div>
         </div>
       </div>
@@ -692,6 +693,7 @@
 
     <!-- 메인 슬라이드 -->
     <section class="main-slide">
+      <h2 style="display: none;">Main Slide</h2>
       <div class="swiper-container sw-main">
         <ul class="swiper-wrapper">
           <li class="swiper-slide">
@@ -710,7 +712,7 @@
                   Read More
                 </span>
               </p>
-              <img src="images/main_1.jpg" art="메인사진1">
+              <img src="images/main_1.jpg" alt="메인사진1">
             </a>
           </li>
           <li class="swiper-slide">
@@ -729,7 +731,7 @@
                   Read More
                 </span>
               </p>
-              <img src="images/main_2.jpg" art="메인사진2">
+              <img src="images/main_2.jpg" alt="메인사진2">
             </a>
           </li>
           <li class="swiper-slide">
@@ -748,7 +750,7 @@
                   Read More
                 </span>
               </p>
-              <img src="images/main_3.jpg" art="메인사진3">
+              <img src="images/main_3.jpg" alt="메인사진3">
             </a>
           </li>
           <li class="swiper-slide">
@@ -767,7 +769,7 @@
                   Read More
                 </span>
               </p>
-              <img src="images/main_4.jpg" art="메인사진4">
+              <img src="images/main_4.jpg" alt="메인사진4">
             </a>
           </li>
         </ul>
@@ -791,7 +793,7 @@
             <a href="#" class="news-link">
               <ul class="news-list clearfix">
                 <li>
-                  <img class="news__img" src="images/news_img_1.jpg" art="인하 뉴스 이미지">
+                  <img class="news__img" src="images/news_img_1.jpg" alt="인하 뉴스 이미지">
                 </li>
                 <li>
                   <div class="news-cont">
@@ -825,7 +827,7 @@
             <a href="#" class="news-link">
               <ul class="news-list clearfix">
                 <li>
-                  <img class="news__img" src="images/news_img_2.jpg" art="인하인 인터뷰 이미지">
+                  <img class="news__img" src="images/news_img_2.jpg" alt="인하인 인터뷰 이미지">
                 </li>
                 <li>
                   <div class="news-cont">
@@ -972,6 +974,7 @@
 
       <!-- 배너 슬라이드 -->
       <section class="banner-slide">
+        <h2 style="display: none;">Banner Slide</h2>
         <div class="swiper-container sw-banner">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -1028,7 +1031,7 @@
                   <div class="swiper-slide">
                     <a href="" class="seminar-link">
                       <span class="seminar-link__img">
-                        <img src="images/seminar_1.png">
+                        <img src="images/seminar_1.png" alt="미래자동차공학 융합전공/마이크로전공 설명회 및 신청 방법 안내">
                       </span>
                       <span class="seminar-link__tit">
                         [미래자동차 사업단] 미래자동차공학 융합전공/마이크로전공 설명회 및 신청 방법 안내
@@ -1047,7 +1050,7 @@
                   <div class="swiper-slide">
                     <a href="" class="seminar-link">
                       <span class="seminar-link__img">
-                        <img src="images/seminar_2.jpg">
+                        <img src="images/seminar_2.jpg" alt="법학전문대학원 학술주간 - 새로운 10년을 위하여 -">
                       </span>
                       <span class="seminar-link__tit">
                         법학전문대학원 학술주간 - 새로운 10년을 위하여 -
@@ -1066,7 +1069,7 @@
                   <div class="swiper-slide">
                     <a href="" class="seminar-link">
                       <span class="seminar-link__img">
-                        <img src="images/seminar_3.jpg">
+                        <img src="images/seminar_3.jpg" alt="인하 ACE+사업-대학혁신지원사업 공동 포럼 (11.28.)">
                       </span>
                       <span class="seminar-link__tit">
                         인하 ACE+사업-대학혁신지원사업 공동 포럼 (11.28.)
@@ -1085,7 +1088,7 @@
                   <div class="swiper-slide">
                     <a href="" class="seminar-link">
                       <span class="seminar-link__img">
-                        <img src="images/seminar_4.jpg">
+                        <img src="images/seminar_4.jpg" alt="제44회 글로컬 다문화교육포럼 국내학자초청 특강">
                       </span>
                       <span class="seminar-link__tit">
                         [공지] 제44회 글로컬 다문화교육포럼 국내학자초청 특강
@@ -1104,7 +1107,7 @@
                   <div class="swiper-slide">
                     <a href="" class="seminar-link">
                       <span class="seminar-link__img">
-                        <img src="images/seminar_5.jpg">
+                        <img src="images/seminar_5.jpg" alt="인천가정법원, 인하대 법학연구소, 인천일보 공동 심포지엄 안내">
                       </span>
                       <span class="seminar-link__tit">
                         인천가정법원, 인하대 법학연구소, 인천일보 공동 심포지엄 안내
@@ -1159,11 +1162,12 @@
                     <div class="research__img">
                       <img src="images/research.jpg" alt="연구성과">
                     </div>
-                    <span class="research-txt">
+                    <p class="research-txt">
                       <span class="research__tit">민경진 교수, 아로니아 항노화 효능 논문 저명학술지에 게재</span>
-                      <p class="research__desc">아로니아베리, 항노화 효능 탁월 ▲ 민경진 생명과학과 교수 생명과학과 민경진 교수가 아로니아베리의
-                        항노화 효능 관련 최신 선행연구 194건을 검토해 저술한 리뷰논문이 최근 저명학</p>
-                    </span>
+                      <p class="research__desc">
+                        아로니아베리, 항노화 효능 탁월 ▲ 민경진 생명과학과 교수 생명과학과 민경진 교수가 아로니아베리의
+                        항노화 효능 관련 최신 선행연구 194건을 검토해 저술한 리뷰논문이 최근 저명학
+                      </p>
                     <div class="research-sns-bg"></div>
                   </a>
                   <div class="research-sns-box">
@@ -1203,7 +1207,7 @@
                     <div class="swiper-slide">
                       <a href="#">
                         <div class="sw-sanhak-news-left">
-                          <img class="sw-sanhak-news__img" src="images/sanhak_news_1.jpg">
+                          <img class="sw-sanhak-news__img" src="images/sanhak_news_1.jpg" alt="산학뉴스1">
                         </div>
                         <div class="sw-sanhak-news-right">
                           <span class="sw-sanhak-news__tit">
@@ -1219,7 +1223,7 @@
                     <div class="swiper-slide">
                       <a href="#">
                         <div class="sw-sanhak-news-left">
-                          <img class="sw-sanhak-news__img" src="images/sanhak_news_2.jpg">
+                          <img class="sw-sanhak-news__img" src="images/sanhak_news_2.jpg" alt="산학뉴스2">
                         </div>
                         <div class="sw-sanhak-news-right">
                           <span class="sw-sanhak-news__tit">
@@ -1235,7 +1239,7 @@
                     <div class="swiper-slide">
                       <a href="#">
                         <div class="sw-sanhak-news-left">
-                          <img class="sw-sanhak-news__img" src="images/sanhak_news_3.jpg">
+                          <img class="sw-sanhak-news__img" src="images/sanhak_news_3.jpg" alt="산학뉴스3">
                         </div>
                         <div class="sw-sanhak-news-right">
                           <span class="sw-sanhak-news__tit">
@@ -1251,7 +1255,7 @@
                     <div class="swiper-slide">
                       <a href="#">
                         <div class="sw-sanhak-news-left">
-                          <img class="sw-sanhak-news__img" src="images/sanhak_news_4.png">
+                          <img class="sw-sanhak-news__img" src="images/sanhak_news_4.png" alt="산학뉴스4">
                         </div>
                         <div class="sw-sanhak-news-right">
                           <span class="sw-sanhak-news__tit">
@@ -1267,7 +1271,7 @@
                     <div class="swiper-slide">
                       <a href="#">
                         <div class="sw-sanhak-news-left">
-                          <img class="sw-sanhak-news__img" src="images/sanhak_news_5.jpg">
+                          <img class="sw-sanhak-news__img" src="images/sanhak_news_5.jpg" alt="산학뉴스5">
                         </div>
                         <div class="sw-sanhak-news-right">
                           <span class="sw-sanhak-news__tit">
@@ -1303,6 +1307,7 @@
             </div>
           </div>
         </div>
+      </div>
     </section>
     <!--// 산학협력 -->
 
@@ -1425,29 +1430,29 @@
           <ul class="sns-main-list clearfix">
             <li>
               <a class="sns-main-box" href="#">
-                <img class="sns-main__img" src="images/sns_main_1.jpg">
-                <span class="sns-main__tit">학교 홍보 웹툰 <온보사> 13화</span>
+                <img class="sns-main__img" src="images/sns_main_1.jpg" alt="학교 홍보 웹툰 <온보사> 13화">
+                <span class="sns-main__tit">학교 홍보 웹툰 &lt;온보사&gt; 13화</span>
                 <span class="sns-main__date">2021.08.23.</span>
               </a>
             </li>
             <li>
               <a class="sns-main-box" href="#">
-                <img class="sns-main__img" src="images/sns_main_2.jpg">
+                <img class="sns-main__img" src="images/sns_main_2.jpg" alt="인하 라이프 아카데미 4기 모집">
                 <span class="sns-main__tit">인하 라이프 아카데미 4기 모집</span>
                 <span class="sns-main__date">2021.08.17.</span>
               </a>
             </li>
             <li>
               <a class="sns-main-box" href="#">
-                <img class="sns-main__img" src="images/sns_main_3.jpg">
+                <img class="sns-main__img" src="images/sns_main_3.jpg" alt="2021-2 수업 방식 안내">
                 <span class="sns-main__tit">2021-2 수업 방식 안내</span>
                 <span class="sns-main__date">2021.08.23.</span>
               </a>
             </li>
             <li>
               <a class="sns-main-box" href="#">
-                <img class="sns-main__img" src="images/sns_main_4.jpg">
-                <span class="sns-main__tit">단편영화 Teaser - <비밀을 아는건 우리뿐></span>
+                <img class="sns-main__img" src="images/sns_main_4.jpg" alt="단편영화 Teaser - <비밀을 아는건 우리뿐>">
+                <span class="sns-main__tit">단편영화 Teaser - &lt;비밀을 아는건 우리뿐&gt;</span>
                 <span class="sns-main__date">2021.08.17</span>
               </a>
             </li>
